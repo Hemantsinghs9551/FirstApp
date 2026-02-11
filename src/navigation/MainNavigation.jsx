@@ -1,11 +1,28 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { mergedStacks } from "./ScreenCollection";
 
+const Stack = createStackNavigator();
 const MainNavigation = () => {
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text className='text-red-900'>Hello world</Text>
-    </View>
+    <Stack.Navigator
+      screenOptions={() => ({
+        headerShown: false,
+        animation: "fade",
+      })}
+      initialRouteName="splashScreen"
+    >
+      {mergedStacks?.map((item, index) => {
+        return (
+          <Stack.Screen
+            key={index}
+            name={item.name}
+            component={item.component}
+          />
+        );
+      })}
+    </Stack.Navigator>
   );
 };
+
 export default MainNavigation;

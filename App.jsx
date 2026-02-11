@@ -1,11 +1,28 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import './global.css'
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import './global.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Navigation from './src/navigation/Navigation';
 const App = () => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 1000 * 60 * 5,
+        cacheTime: 1000 * 60 * 10,
+        retry: 1,
+        refetchOnMount: false,
+      },
+      mutations: {
+        retry: 0,
+      },
+    },
+  });
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text className='text-red-900'>Hello world</Text>
-    </View>
+    <SafeAreaProvider>
+      <QueryClientProvider client={queryClient}>
+        <Navigation />
+      </QueryClientProvider>
+    </SafeAreaProvider>
   );
 };
 export default App;
