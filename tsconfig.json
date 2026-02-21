@@ -5,7 +5,7 @@
     "**/*.tsx",
     "App.jsx",
     "nativewind-env.d.ts"
-  ],
+, "src/screens/home/OnBoardingScreeen.tsx"  ],
   "exclude": [
     "**/node_modules",
     "**/Pods"

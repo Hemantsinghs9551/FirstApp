@@ -5,7 +5,7 @@ import { navigate } from '../utils/NavigationUtils';
 
 const SplashScreen = () => {
     setTimeout(() => {
-        navigate("TabNavigator")
+        navigate("onBoardingScreen")
     }, 2000);
   return (
     <View style={styles.container}>
